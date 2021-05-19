@@ -9,16 +9,22 @@ CLASS lcl_exceptions DEFINITION.
   PUBLIC SECTION.
     METHODS:
       call_static_check_exception
-        RAISING cx_abap_invalid_name,
+        RAISING cx_static_check,
       call_dynamic_check_exception,
       call_no_check_exception.
   PRIVATE SECTION.
     METHODS:
+      call_int_static_check_excep
+        RAISING cx_abap_invalid_name,
       call_int_no_check_exception.
 ENDCLASS.
 
 CLASS lcl_exceptions IMPLEMENTATION.
   METHOD call_static_check_exception.
+    call_int_static_check_excep( ).
+  ENDMETHOD.
+
+  METHOD call_int_static_check_excep.
     RAISE EXCEPTION TYPE cx_abap_invalid_name.
   ENDMETHOD.
 
