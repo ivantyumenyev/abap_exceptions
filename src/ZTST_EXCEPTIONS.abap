@@ -32,7 +32,7 @@ CLASS lcl_exceptions IMPLEMENTATION.
     TRY.
         DATA(lt_sflights) = VALUE sflight_tab1( ( ) ).
         DATA(ls_flight) = lt_sflights[ 1 ].
-      CATCH cx_sy_itab_line_not_found INTO DATA(lo_xzero).
+      CATCH cx_sy_itab_line_not_found INTO DATA(lo_xline).
     ENDTRY.
   ENDMETHOD.
 
@@ -86,5 +86,6 @@ START-OF-SELECTION.
   TRY .
       lo_exceptions->call_no_check_exception( ).
     CATCH cx_no_check INTO DATA(lo_xnocheck).
+      WRITE: lo_xnocheck->get_text( ).
     CATCH cx_root INTO DATA(lo_xroot).
   ENDTRY.
